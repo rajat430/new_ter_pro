@@ -1,2 +1,1 @@
-workspace="ter_proj_dev_latest"
 storagename=teststoaragerajtjjfd001
