@@ -10,11 +10,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: export
-        run: |
-          export ${{secrets.TF_SUBSCRIPTION_ID}}
-          export ${{secrets.TF_CLIENT_SECRET}}
-          export ${{secrets.TF_client_id}}
-          export ${{secrets.TF_TENANT_ID}}
+        env:
+          TF_SUBSCRIPTION_ID: ${{secrets.TF_SUBSCRIPTION_ID}}
+          TF_CLIENT_SECRET:  ${{secrets.TF_CLIENT_SECRET}}
+          TF_client_id:  ${{secrets.TF_client_id}}
+          TF_TENANT_ID:  ${{secrets.TF_TENANT_ID}}
+        run: echo "exported env"
       - uses: hashicorp/setup-terraform@v3
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }} 
