@@ -7,6 +7,28 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      - name: prepare_provider
+        run: |
+          cat <<EOF > providers.tf
+          terraform { 
+          required_providers {
+          azurerm = {
+            source = "hashicorp/azurerm"
+            version = "=4.9.0"
+          }
+          }
+          cloud { 
+            organization = "rajat430" 
+            workspaces { 
+              name = ${{vars.workspace}}
+            } 
+          } 
+          }
+          provider "azurerm" {
+            features {}
+              resource_provider_registrations = "none"
+          }
+          EOF
       - name: Checkout
         uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
@@ -17,7 +39,7 @@ jobs:
         run: |
           ls -ltr
           terraform init
-          terraform plan -var-file variables.tfvars --out=tfplan.out 
+          terraform plan --out=tfplan.out 
           terraform apply tfplan.out
   test:
     name: init
@@ -34,4 +56,4 @@ jobs:
         run: |
           ls -ltr
           terraform init
-          terraform plan -var-file variables-test.tfvars --out=tfplan.out
+          terraform plan --out=tfplan.out
