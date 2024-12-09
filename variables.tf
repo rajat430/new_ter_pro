@@ -9,3 +9,12 @@ variable "location" {
   type = string
   description = "This is the location"
 }
+
+variable "workspace" {
+  default = "ter_proj_test" 
+  type = string
+}
+
+variable "storagename" {
+  type = string
+}

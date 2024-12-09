@@ -3,7 +3,7 @@ data "azurerm_resource_group" "example" {
 }
 
 resource "azurerm_storage_account" "example" {
-  name                     = "storageaccountname"
+  name                     = var.storagename
   resource_group_name      = data.azurerm_resource_group.example.name
   location                 = var.location
   account_tier             = "Standard"
