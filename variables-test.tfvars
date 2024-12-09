@@ -1,2 +1,1 @@
-workspace = "ter_proj_test"
-storagename="teststoaragerajtjjfd001"
+storagename=teststoaragerajtjjfd001

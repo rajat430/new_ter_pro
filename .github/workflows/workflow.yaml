@@ -31,7 +31,8 @@ jobs:
               resource_provider_registrations = "none"
           }
           EOF
-          cat providers.tf
+          cat providers.
+          ls
       - uses: hashicorp/setup-terraform@v3
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
@@ -40,7 +41,7 @@ jobs:
         run: |
           ls -ltr
           terraform init
-          terraform plan -var-file=variables.tf --out=tfplan.out 
+          terraform plan -var-file=variables-dev.tf --out=tfplan.out 
           terraform apply tfplan.out
   test:
     name: init
