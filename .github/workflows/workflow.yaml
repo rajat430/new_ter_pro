@@ -46,6 +46,7 @@ jobs:
     name: init
     runs-on: ubuntu-latest
     environment: test
+    needs: dev
     steps:
       - name: Checkout
         uses: actions/checkout@v4
