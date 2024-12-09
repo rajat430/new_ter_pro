@@ -31,7 +31,7 @@ jobs:
               resource_provider_registrations = "none"
           }
           EOF
-          cat providers.
+          cat providers.tf
           ls
       - uses: hashicorp/setup-terraform@v3
         with:
@@ -51,6 +51,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        - name: prepare_provider
+        run: |
+          cat <<EOF > providers.tf
+          terraform { 
+          required_providers {
+          azurerm = {
+            source = "hashicorp/azurerm"
+            version = "=4.9.0"
+          }
+          }
+          cloud { 
+            organization = "rajat430" 
+            workspaces { 
+              name = "${{vars.workspace}}"
+            } 
+          } 
+          }
+          provider "azurerm" {
+            features {}
+              resource_provider_registrations = "none"
+          }
+          EOF
+          cat providers.tf
+          ls
       - uses: hashicorp/setup-terraform@v3
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
