@@ -1,0 +1,25 @@
+on: push
+name: terraform_ci-cd
+run-name: ubuntu-latest
+jobs:
+  job:
+    name: init
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: export
+        run: |
+          export ${{secrets.TF_SUBSCRIPTION_ID}}
+          export ${{secrets.TF_CLIENT_SECRET}}
+          export ${{secrets.TF_client_id}}
+          export ${{secrets.TF_TENANT_ID}}
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }} 
+      - name: command line
+        run: |
+          ls
+          terraform init
+          terraform plan
