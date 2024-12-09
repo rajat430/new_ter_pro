@@ -1,1 +1,1 @@
-storagename="teststoaragerajtjjfd001"
+storagename="devstoaragerajtjjfd001"
