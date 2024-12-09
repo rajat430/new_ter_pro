@@ -26,6 +26,6 @@ jobs:
           TF_client_id:  ${{secrets.TF_client_id}}
           TF_TENANT_ID:  ${{secrets.TF_TENANT_ID}}
         run: |
-          ls
+          ls -ltr
           terraform init
           terraform plan
