@@ -51,7 +51,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        - name: prepare_provider
+      - name: prepare_provider
         run: |
           cat <<EOF > providers.tf
           terraform { 
