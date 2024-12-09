@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: prepare_provider
         run: |
           cat <<EOF > providers.tf
@@ -29,8 +31,6 @@ jobs:
               resource_provider_registrations = "none"
           }
           EOF
-      - name: Checkout
-        uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
@@ -39,7 +39,7 @@ jobs:
         run: |
           ls -ltr
           terraform init
-          terraform plan --out=tfplan.out 
+          terraform plan -var-file=variables.tf --out=tfplan.out 
           terraform apply tfplan.out
   test:
     name: init
@@ -56,4 +56,4 @@ jobs:
         run: |
           ls -ltr
           terraform init
-          terraform plan --out=tfplan.out
+          terraform plan -var-file=variables-test.tf--out=tfplan.out
