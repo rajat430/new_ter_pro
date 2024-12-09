@@ -20,6 +20,11 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }} 
       - name: command line
+        env:
+          TF_SUBSCRIPTION_ID: ${{secrets.TF_SUBSCRIPTION_ID}}
+          TF_CLIENT_SECRET:  ${{secrets.TF_CLIENT_SECRET}}
+          TF_client_id:  ${{secrets.TF_client_id}}
+          TF_TENANT_ID:  ${{secrets.TF_TENANT_ID}}
         run: |
           ls
           terraform init
