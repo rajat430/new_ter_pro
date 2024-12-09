@@ -41,7 +41,7 @@ jobs:
         run: |
           ls -ltr
           terraform init
-          terraform plan -var-file=variables-dev.tf --out=tfplan.out 
+          terraform plan -var-file=variables-dev.tfvars --out=tfplan.out 
           terraform apply tfplan.out
   test:
     name: init
@@ -83,4 +83,4 @@ jobs:
         run: |
           ls -ltr
           terraform init
-          terraform plan -var-file=variables-test.tf--out=tfplan.out
+          terraform plan -var-file=variables-test.tfvars --out=tfplan.out
