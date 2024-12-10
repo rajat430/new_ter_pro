@@ -16,20 +16,14 @@ jobs:
           required_providers {
           azurerm = {
             source = "hashicorp/azurerm"
-            version = "=4.9.0"
-          }
-          }
+            version = "=4.9.0"}}
             cloud { 
               organization = "rajat430" 
               workspaces { 
-                name = "${{ vars.WORKSPACE }}"
-              } 
-            } 
-          }
-          provider "azurerm" {
-            features {}
-              resource_provider_registrations = "none"
-          }
+                name = "${{ vars.WORKSPACE }}"}}}
+            provider "azurerm" {
+              features {}
+                resource_provider_registrations = "none"}
           EOF
       - uses: hashicorp/setup-terraform@v3
         with:
@@ -56,22 +50,15 @@ jobs:
           required_providers {
           azurerm = {
             source = "hashicorp/azurerm"
-            version = "=4.9.0"
-          }
-          }
+            version = "=4.9.0"}}
             cloud { 
               organization = "rajat430" 
               workspaces { 
-                name = "${{ vars.WORKSPACE }}"
-              } 
-            } 
-          }
-          provider "azurerm" {
-            features {}
-              resource_provider_registrations = "none"
-          }
+                name = "${{ vars.WORKSPACE }}"}}}
+            provider "azurerm" {
+              features {}
+                resource_provider_registrations = "none"}
           EOF
-      
       - uses: hashicorp/setup-terraform@v3
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
