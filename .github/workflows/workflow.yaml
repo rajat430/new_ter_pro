@@ -64,7 +64,7 @@ jobs:
           cloud { 
             organization = "rajat430" 
             workspaces { 
-              name = ""
+              name = "${{vars.workspace}}"
             } 
           } 
           }
