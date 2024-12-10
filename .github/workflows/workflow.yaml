@@ -13,17 +13,24 @@ jobs:
         run:
           cat <<EOF
           terraform { 
-          required_providers {
-          azurerm = {
-            source = "hashicorp/azurerm"
-            version = "=4.9.0"}}
+              required_providers {
+              azurerm = {
+                source = "hashicorp/azurerm"
+                version = "=4.9.0"
+              }
+            }
             cloud { 
               organization = "rajat430" 
               workspaces { 
-                name = "${{ vars.WORKSPACE }}"}}}
-            provider "azurerm" {
-              features {}
-                resource_provider_registrations = "none"}
+                name = ""
+              } 
+            } 
+          }
+
+          provider "azurerm" {
+            features {}
+              resource_provider_registrations = "none"
+          }
           EOF
       - uses: hashicorp/setup-terraform@v3
         with:
@@ -47,17 +54,23 @@ jobs:
         run:
           cat <<EOF
           terraform { 
-          required_providers {
-          azurerm = {
-            source = "hashicorp/azurerm"
-            version = "=4.9.0"}}
+              required_providers {
+              azurerm = {
+                source = "hashicorp/azurerm"
+                version = "=4.9.0"
+              }
+            }
             cloud { 
               organization = "rajat430" 
               workspaces { 
-                name = "${{ vars.WORKSPACE }}"}}}
-            provider "azurerm" {
-              features {}
-                resource_provider_registrations = "none"}
+                name = ""
+              } 
+            } 
+          }
+          provider "azurerm" {
+            features {}
+              resource_provider_registrations = "none"
+          }
           EOF
       - uses: hashicorp/setup-terraform@v3
         with:
