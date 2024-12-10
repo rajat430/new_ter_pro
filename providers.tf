@@ -8,7 +8,7 @@ terraform {
   cloud { 
     organization = "rajat430" 
     workspaces { 
-      name = var.workspace
+      name = ""
     } 
   } 
 }
